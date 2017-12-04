@@ -11,13 +11,15 @@ class MailController extends Controller
       $email = $request->email;
       $title = $request->title;
       $content = $request->message;
+      $subject = $request->title;
 
-      \Mail::send('emails.contact', ['title' => $title, 'content' => $content], function ($message) use($email, $senderName)
+      \Mail::send('emails.contact', ['content' => $content], function ($message) use($email, $senderName, $subject)
       {
 
           $message->from($email, $senderName);
-
           $message->to('favoriabs@gmail.com');
+          $message->subject($subject);
+          // $message->to('ask@sabilawyer.com');
 
       });
 
