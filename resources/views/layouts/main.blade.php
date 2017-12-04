@@ -4,6 +4,16 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="law, sabilawyer, lawyer">
+		<meta name="robots" content="index,follow">
+    <meta property="og:url"           content="https://www.sabilawyer.com" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="SabiLawyer: Law For Everyone" />
+    <meta property="og:description"   content="Law For Everyone" />
+    <meta name="coverage" content="Worldwide">
+		<meta name="distribution" content="Global">
+		<meta name="rating" content="General">
+    <meta property="og:image"         content="{{asset('img/sabilawyer1.png')}}" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
