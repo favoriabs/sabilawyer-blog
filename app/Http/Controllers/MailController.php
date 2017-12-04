@@ -17,9 +17,9 @@ class MailController extends Controller
       {
 
           $message->from($email, $senderName);
-          $message->to('favoriabs@gmail.com');
+          // $message->to('favoriabs@gmail.com');
           $message->subject($subject);
-          // $message->to('ask@sabilawyer.com');
+          $message->to('ask@sabilawyer.com');
 
       });
 
