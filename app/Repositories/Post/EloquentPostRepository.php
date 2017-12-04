@@ -41,7 +41,7 @@ class EloquentPostRepository implements PostContract {
   }
 
   public function viewPostsInCategory($categoryId){
-    $posts = Post::with('category')->where('category_id', $categoryId)->orderBy('created_at', 'desc')->paginate(20)();
+    $posts = Post::with('category')->where('category_id', $categoryId)->orderBy('created_at', 'desc')->paginate(20);
     return $posts;
   }
 
