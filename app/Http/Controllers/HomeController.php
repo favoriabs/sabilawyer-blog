@@ -36,7 +36,8 @@ class HomeController extends Controller
     public function viewPost($slug){
       $post = $this->repo->findPostBySlug($slug);
       $categories = $this->categoryRepo->findAll();
-      return view('post.show')->with('post', $post)->with('categories', $categories);
+      $posts = $this->repo->findAll();
+      return view('post.show')->with('post', $post)->with('categories', $categories)->with('posts', $posts);
     }
 
     public function viewPostsInCategory($categoryId){
