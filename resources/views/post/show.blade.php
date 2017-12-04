@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-  Home
+  {{$post->slug}}
 @endsection
 
 @section('page-title')
@@ -13,12 +13,32 @@
 @endsection
 
 @section('content')
-<div id="fb-root"></div>
+<style media="screen">
+  @media screen and (min-width: 600px){
+    #mobile-share {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      display: none;
+    }
+  }
+
+  li{
+    display:inline-block;
+  }
+
+  #twitter{
+    margin-top: auto;
+  }
+</style>
+
+
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9&appId=474774889527650";
+  js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=474774889527650';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
@@ -69,6 +89,34 @@
         <!-- sidebar content -->
         @include('layouts.sidenav')
       </div>
+      <?php
+        $url = urlencode("http://sabilawyer.com/".$post->slug);
+       ?>
+      <ul>
+        <p>Share Post:</p>
+        <li id="facebook">
+          <div class="fb-share-button"
+            data-href="http://sabilawyer.com/"<?php echo $post->slug ?>
+            data-layout="button_count" data-size="large">
+          </div>
+          <div class="fb-share-button" data-href="http://sabilawyer.com/"<?php echo $post->slug ?>
+              data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank"
+            href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url ?>">Share</a></div>
+      </li>
+      <li>
+        <div>
+          <a id="twitter" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-via="sabilawyer"
+          data-hashtags="sabilawyer" data-show-count="false">Tweet</a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </li>
+      <li>
+        <div id="mobile-share">
+          <a href="whatsapp://send?text=http://www.sabilawyer.com"
+            data-action="share/whatsapp/share"><img src="{{asset('img/whatsapp.png')}}" alt="whatsapp logo" width="60px" height="5px"></a>
+        </div>
+      </li>
+      </ul>
     </div>
   </div>
   <!-- end of main page content -->
@@ -78,4 +126,5 @@
       <div class="fb-comments" data-href="http://sabilawyer.com/"<?php. echo $post->slug ?> data-numposts="5"></div>
     </div>
   </section>
+
   @endsection
