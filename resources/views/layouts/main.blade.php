@@ -34,12 +34,31 @@
     <div class="page-header">
       <div class="section">
         <div class="container">
-          <div class="has-text-left">
-            <h3 class="title is-size-4">@yield('page-title')</h3>
+          <div class="columns">
+            <div class="column is-8">
+              <div class="has-text-left">
+                <h3 class="title is-size-4">@yield('page-title')</h3>
+              </div>
+            </div>
+            <div class="column is-4">
+            <!-- search bar -->
+            <form class="" action="{{route('search')}}" method="get">
+              <div class="field has-addons">
+                <div class="control">
+                  <input class="input" type="text" placeholder="Find a post" name="q">
+                </div>
+                <div class="control">
+                  <button class="button is-info">
+                    Search
+                  </button>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
       </div>
     </div>
+  </div>
     <!-- end of page header -->
 
     @yield('content')
