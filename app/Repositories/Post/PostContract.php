@@ -10,4 +10,5 @@ interface PostContract {
   public function discard($postId);
   public function findPostBySlug($slug);
   public function viewPostsInCategory($categoryId);
+  public function searchPost($request);
 }

@@ -9,6 +9,7 @@ use App\Repositories\Category\CategoryContract;
 class HomeController extends Controller
 {
     protected $repo;
+    protected $categoryRepo;
 
     public function __construct(PostContract $postContract, CategoryContract $categoryContract) {
       $this->repo = $postContract;
@@ -45,5 +46,12 @@ class HomeController extends Controller
       $categories = $this->categoryRepo->findAll();
       $category = $this->categoryRepo->findById($categoryId);
       return view('category.post')->with('posts', $posts)->with('categories', $categories)->with('category', $category);
+    }
+
+    public function search(Request $request){
+      $posts = $this->repo->findAll();
+      $categories = $this->categoryRepo->findAll();
+      $searchedPosts = $this->repo->searchPost($request);
+      return view('post.search')->with('searchedPosts', $searchedPosts)->with('categories', $categories)->with('posts', $posts)->with('query', $request->q);
     }
 }

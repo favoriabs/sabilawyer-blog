@@ -45,6 +45,11 @@ class EloquentPostRepository implements PostContract {
     return $posts;
   }
 
+  public function searchPost($request){
+    $posts = Post::with('category')->where('title', 'LIKE', "%$request->q%")->paginate(20);
+    return $posts;
+  }
+
   private function setPostProperties($post, $request){
     $post->title = $request->title;
     $post->content = $request->content;
