@@ -31,8 +31,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-          'post_picture' => 'size:1024',
-          'post_picture' => 'mimes:jpeg,bmp,png,gif'
+          'post_picture' => 'max:1024',
         ]);
 
         $post = $this->repo->create($request);
