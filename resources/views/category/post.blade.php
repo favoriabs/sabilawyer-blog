@@ -31,7 +31,7 @@
                   <span class="tag is-black is-medium"><a class="has-text-white" href="#">{{$post->category->name}}</a></span>
                 </span>
               </h4>
-              <small id="text-theme">Posted by Sabilawyer at {{$post->created_at}}</small>
+              <small id="text-theme">Posted by Sabilawyer at {{ $post->created_at->format('M d Y, g:i:A') }}</small>
             </div>
             <!-- end of box header -->
             <!-- box content -->

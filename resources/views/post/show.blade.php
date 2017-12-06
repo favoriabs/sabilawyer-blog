@@ -28,9 +28,10 @@
     display:inline-block;
   }
 
-  #twitter{
-    margin-top: auto;
-  }
+  /*#twiitter{
+    background-color: red;
+  }*/
+
 </style>
 
 
@@ -41,6 +42,7 @@
   js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=474774889527650';
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
   <!-- main page content -->
   <div class="hero-body">
@@ -58,7 +60,7 @@
                   <span class="tag is-black is-medium"><a class="has-text-white" href="{{route('view_posts_in_category', $post->category->id)}}">{{$post->category->name}}</a></span>
                 </span>
               </h4>
-              <small id="text-theme">Posted by Sabilawyer at {{$post->created_at}}</small>
+              <small id="text-theme">Posted by Sabilawyer at {{ $post->created_at->format('M d Y, g:i:A') }}</small>
             </div>
             <!-- end of box header -->
             <!-- box content -->
@@ -69,7 +71,7 @@
 
                   <hr>
                   <div class="box-content-text">
-                    <p>{!!$post->content!!}</p>
+                    {!! ($post->content) !!}
                   </div>
                   <div class="has-text-right">
                     <a class="button is-small" href="{{route('index_page')}}">Back to Home</a>
@@ -84,46 +86,40 @@
             <!-- end box content -->
           </div>
           <!-- end of post -->
-
+          <?php
+            $url = urlencode("http://sabilawyer.com/".$post->slug);
+           ?>
+          <ul>
+            <p>Share Post:</p>
+            <li id="facebook">
+              <div class="fb-share-button"
+                data-href="http://sabilawyer.com/{{$post->slug}}"
+                data-layout="button_count" data-size="large" data-mobile_iframe="true">
+              </div>
+            </li>
+            <li id="twitter">
+                <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-via="sabilawyer"
+                data-hashtags="sabilawyer" data-show-count="false">Tweet</a>
+            </li>
+            <!-- <li> -->
+                <a id="mobile-share" href="whatsapp://send?text=http://www.sabilawyer.com"
+                  data-action="share/whatsapp/share"><i class="fa fa-whatsapp fa-2x" aria-hidden="true"></i>
+                </a>
+            <!-- </li> -->
+          </ul>
         </div>
         <!-- sidebar content -->
         @include('layouts.sidenav')
       </div>
-      <?php
-        $url = urlencode("http://sabilawyer.com/".$post->slug);
-       ?>
-      <ul>
-        <p>Share Post:</p>
-        <li id="facebook">
-          <div class="fb-share-button"
-            data-href="http://sabilawyer.com/"<?php echo $post->slug ?>
-            data-layout="button_count" data-size="large">
-          </div>
-          <div class="fb-share-button" data-href="http://sabilawyer.com/"<?php echo $post->slug ?>
-              data-layout="button_count" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank"
-            href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $url ?>">Share</a></div>
-      </li>
-      <li>
-        <div>
-          <a id="twitter" href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-size="large" data-via="sabilawyer"
-          data-hashtags="sabilawyer" data-show-count="false">Tweet</a>
-          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        </div>
-      </li>
-      <li>
-        <div id="mobile-share">
-          <a href="whatsapp://send?text=http://www.sabilawyer.com"
-            data-action="share/whatsapp/share"><img src="{{asset('img/whatsapp.png')}}" alt="whatsapp logo" width="60px" height="5px"></a>
-        </div>
-      </li>
-      </ul>
+
+
     </div>
   </div>
   <!-- end of main page content -->
 
   <section>
     <div class="container">
-      <div class="fb-comments" data-href="http://sabilawyer.com/"<?php. echo $post->slug ?> data-numposts="5"></div>
+      <div class="fb-comments" data-href="http://sabilawyer.com/{{$post->slug}}" data-numposts="5"></div>
     </div>
   </section>
 
