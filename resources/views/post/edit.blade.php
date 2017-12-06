@@ -61,7 +61,7 @@
                       <label class="label">Category</label>
                       <p class="control">
                         <div class="select is-fullwidth">
-                          <select class="" name="category" required>
+                          <select class="" name="category">
                             @foreach($categories as $category)
                               <option value="{{$category->id}}" @if($post->category_id === $category->id) selected @endif>{{$category->name}}</option>
                             @endforeach

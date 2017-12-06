@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('post_picture')->nullable();
             $table->string('slug');
             $table->integer('user_id')->unsigned();
-            $table->integer('category_id')->unsigned();
+            $table->integer('category_id')->unsigned()->nullable();
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('category_id')->references('id')->on('categories');

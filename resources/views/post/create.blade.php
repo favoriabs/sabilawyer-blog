@@ -55,13 +55,14 @@
                     </div>
                     <div class="field">
                       <label class="label">Add a Picture</label>
-                        <input class="input" type="file" name="post_picture" accept="image/*">
+                        <input class="input" type="file" name="post_picture" accept="image/*" required>
                     </div>
                     <div class="field">
                       <label class="label">Category</label>
                       <p class="control">
                         <div class="select is-fullwidth">
-                          <select class="" name="category" required>
+                          <select class="" name="category">
+                            <option value="">No Category</option>
                             @foreach($categories as $category)
                               <option value="{{$category->id}}">{{$category->name}}</option>
                             @endforeach

@@ -28,7 +28,9 @@
               <h4 class="title is-4">
                 {{$post->title}}
                 <span class="labels is-pulled-right">
-                  <span class="tag is-black is-medium"><a class="has-text-white" href="{{route('view_posts_in_category', $post->category->id)}}">{{$post->category->name}}</a></span>
+                  @if($post->category)
+                    <span class="tag is-black is-medium"><a class="has-text-white" href="{{route('view_posts_in_category', $post->category->id)}}">{{$post->category->name}}</a></span>
+                  @endif
                 </span>
               </h4>
               <small id="text-theme">Posted by Sabilawyer at {{ $post->created_at->format('M d Y, g:i:A') }}</small>

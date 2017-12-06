@@ -19,7 +19,7 @@
   <!-- end of sidebar subscriptions -->
 
   <!-- sidebar labels -->
-  <div class="card-wrapper">
+  <!-- <div class="card-wrapper">
     <div class="card">
       <header class="card-header">
         <p class="card-header-title" id="theme">
@@ -36,7 +36,8 @@
         </div>
       </div>
     </div>
-    <!-- end of sidebar labels -->
-  </div>
+  </div> -->
+  <!-- end of sidebar labels -->
+
   <!-- end of sidebar content -->
 </div>
